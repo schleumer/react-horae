@@ -146,7 +146,7 @@ var App = function (_React$Component) {
       _react2.default.createElement(
         'div',
         { style: { width: '450px' } },
-        _react2.default.createElement(_index2.default, null)
+        _react2.default.createElement(_index2.default, { value: '2016-02-13' })
       ),
       _react2.default.createElement(
         'div',
@@ -494,7 +494,7 @@ var DateTime = function (_React$Component) {
     if (this.props.value) {
       var nextValue = _moment2.default.isMoment(this.props.value) ? this.props.value : (0, _moment2.default)(this.props.value);
 
-      this.store = (0, _storeBuilder2.default)(nextValue);
+      this.store = (0, _storeBuilder2.default)(nextValue.clone(), nextValue);
     } else {
       this.store = (0, _storeBuilder2.default)((0, _moment2.default)());
     }
@@ -574,6 +574,8 @@ var DateTime = function (_React$Component) {
     var current = _state.current;
     var value = _state.value;
 
+    console.log(this.state);
+
     var displayer = value && value.format("YYYY-MM-DD");
 
     return _react2.default.createElement(
@@ -615,10 +617,14 @@ var _redux = require('redux');
 // i did on redux to avoid event emitter, since redux footprint
 // isn't too whopping
 var storeBuilder = function storeBuilder(current) {
+  var value = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
+  console.log(current, value);
   var initialState = {
     current: current,
     displayer: null,
-    opened: false
+    opened: false,
+    value: value
   };
 
   var actions = {
