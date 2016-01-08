@@ -4,11 +4,13 @@ import { createStore } from 'redux';
 // this might be overkill
 // i did on redux to avoid event emitter, since redux footprint
 // isn't too whopping
-const storeBuilder = (current) => {
+const storeBuilder = (current, value = null) => {
+  console.log(current, value);
   const initialState = {
     current,
     displayer: null,
-    opened: false
+    opened: false,
+    value
   }
 
   const actions = {

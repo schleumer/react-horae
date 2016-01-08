@@ -18,10 +18,10 @@ class App extends React.Component {
         return (
           <div>
             <div style={{width: '450px'}}>
-              <DateTime  onChange={this.dateChanged} />
+              <DateTime onChange={this.dateChanged} />
             </div>
             <div style={{width: '450px'}}>
-              <DateTime />
+              <DateTime value="2016-02-13" />
             </div>
             <div style={{width: '450px'}}>
               <DateTime />
