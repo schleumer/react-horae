@@ -28,7 +28,7 @@ class DateTime extends React.Component {
         ? this.props.value
         : moment(this.props.value)
 
-      this.store = storeBuilder(nextValue);
+      this.store = storeBuilder(nextValue.clone(), nextValue);
     } else {
       this.store = storeBuilder(moment());
     }
@@ -101,6 +101,9 @@ class DateTime extends React.Component {
 
   render() {
     const { opened, current, value } = this.state;
+
+
+    console.log(this.state);
 
     const displayer = value && value.format("YYYY-MM-DD");
 
